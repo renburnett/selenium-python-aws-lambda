@@ -65,7 +65,6 @@ def lambda_handler(event, context):
     song_artist_03 = driver.find_element_by_xpath(xpath_song_artist_03).get_attribute('innerHTML')
     song_album_03 = driver.find_element_by_xpath(xpath_song_album_03).get_attribute('innerHTML')
     
-
     recent_songs = []
     first_song = {
         'time': song_time_01,
@@ -85,7 +84,6 @@ def lambda_handler(event, context):
         'artist': song_artist_03,
         'album': song_album_03
     }
-
     recent_songs.append(first_song)
     
     #NOTE: there is a bug on the KEXP page that double-prints the first or second most recent songs sometimes
@@ -98,4 +96,4 @@ def lambda_handler(event, context):
     print(recent_songs)
     driver.close()
 
-    return first_song
+    return recent_songs
