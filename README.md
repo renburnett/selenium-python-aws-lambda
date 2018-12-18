@@ -1,7 +1,7 @@
-# Selenium Python on AWS Lambda with chrome webdriver
-## Forked from @ManivannanMurugavel
+## Selenium Python on AWS Lambda with chrome webdriver
+### Forked from @ManivannanMurugavel
 
-- All necessary files and dependencies for Python, Selenium and the Chrome webdriver were forked from @ManivannanMurugavel 's 
+- All necessary files and dependencies for Python, Selenium and the Chrome webdriver were forked from @ManivannanMurugavel's repo 
 - The implementation for the actual webscraper was written by yours truly (; 
 
 1. Zip this all of these files together
