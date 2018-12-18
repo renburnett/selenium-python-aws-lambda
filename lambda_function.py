@@ -31,40 +31,52 @@ def lambda_handler(event, context):
     else:
         print("Error: ")
         return ("Couldnt get url from event object")
-    
+
+    try:
         #first song
-    xpath_time_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-time"][1]//h5[1]'
-    xpath_song_name_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
-    xpath_song_artist_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//div[1]'
-    xpath_song_album_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//div[2]'
+        xpath_time_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-time"][1]//h5[1]'
+        xpath_song_name_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
+        xpath_song_artist_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//div[1]'
+        xpath_song_album_01 = '//div[@class="PlaylistItem u-mb1"][1]//div[@class="PlaylistItem-primaryContent"]//div[2]'
 
-    song_time_01 = driver.find_element_by_xpath(xpath_time_01).get_attribute('innerHTML')
-    song_name_01 = driver.find_element_by_xpath(xpath_song_name_01).get_attribute('innerHTML')
-    song_artist_01 = driver.find_element_by_xpath(xpath_song_artist_01).get_attribute('innerHTML')
-    song_album_01 = driver.find_element_by_xpath(xpath_song_album_01).get_attribute('innerHTML')
+        song_time_01 = driver.find_element_by_xpath(xpath_time_01).get_attribute('innerHTML')
+        song_name_01 = driver.find_element_by_xpath(xpath_song_name_01).get_attribute('innerHTML')
+        song_artist_01 = driver.find_element_by_xpath(xpath_song_artist_01).get_attribute('innerHTML')
+        song_album_01 = driver.find_element_by_xpath(xpath_song_album_01).get_attribute('innerHTML')
+    except:
+        song_artist_01 = ''
+        song_album_01 = ''
+        
+    try:
+        #second song
+        xpath_time_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-time"][1]//h5[1]'
+        xpath_song_name_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
+        xpath_song_artist_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//div[1]'
+        xpath_song_album_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//div[2]'
 
-    #second song
-    xpath_time_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-time"][1]//h5[1]'
-    xpath_song_name_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
-    xpath_song_artist_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//div[1]'
-    xpath_song_album_02 = '//div[@class="PlaylistItem u-mb1"][2]//div[@class="PlaylistItem-primaryContent"]//div[2]'
+        song_time_02 = driver.find_element_by_xpath(xpath_time_02).get_attribute('innerHTML')
+        song_name_02 = driver.find_element_by_xpath(xpath_song_name_02).get_attribute('innerHTML')
+        song_artist_02 = driver.find_element_by_xpath(xpath_song_artist_02).get_attribute('innerHTML')
+        song_album_02 = driver.find_element_by_xpath(xpath_song_album_02).get_attribute('innerHTML')
+    except:
+        song_artist_02 = ''
+        song_album_02 = ''
 
-    song_time_02 = driver.find_element_by_xpath(xpath_time_02).get_attribute('innerHTML')
-    song_name_02 = driver.find_element_by_xpath(xpath_song_name_02).get_attribute('innerHTML')
-    song_artist_02 = driver.find_element_by_xpath(xpath_song_artist_02).get_attribute('innerHTML')
-    song_album_02 = driver.find_element_by_xpath(xpath_song_album_02).get_attribute('innerHTML')
+    try:
+        #third song   
+        xpath_time_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-time"][1]//h5[1]'
+        xpath_song_name_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
+        xpath_song_artist_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//div[1]'
+        xpath_song_album_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//div[2]'
 
-    #third song   
-    xpath_time_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-time"][1]//h5[1]'
-    xpath_song_name_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//h3[1]'
-    xpath_song_artist_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//div[1]'
-    xpath_song_album_03 = '//div[@class="PlaylistItem u-mb1"][3]//div[@class="PlaylistItem-primaryContent"]//div[2]'
+        song_time_03 = driver.find_element_by_xpath(xpath_time_03).get_attribute('innerHTML')
+        song_name_03 = driver.find_element_by_xpath(xpath_song_name_03).get_attribute('innerHTML')
+        song_artist_03 = driver.find_element_by_xpath(xpath_song_artist_03).get_attribute('innerHTML')
+        song_album_03 = driver.find_element_by_xpath(xpath_song_album_03).get_attribute('innerHTML')
+    except:
+        song_artist_03 = ''
+        song_album_03 = ''
 
-    song_time_03 = driver.find_element_by_xpath(xpath_time_03).get_attribute('innerHTML')
-    song_name_03 = driver.find_element_by_xpath(xpath_song_name_03).get_attribute('innerHTML')
-    song_artist_03 = driver.find_element_by_xpath(xpath_song_artist_03).get_attribute('innerHTML')
-    song_album_03 = driver.find_element_by_xpath(xpath_song_album_03).get_attribute('innerHTML')
-    
     recent_songs = []
     first_song = {
         'time': song_time_01,
@@ -84,8 +96,8 @@ def lambda_handler(event, context):
         'artist': song_artist_03,
         'album': song_album_03
     }
+
     recent_songs.append(first_song)
-    
     #NOTE: there is a bug on the KEXP page that double-prints the first or second most recent songs sometimes
     #this if-statement checks for dupes
     if song_name_02 != song_name_01:
