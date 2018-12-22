@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options  
 from time import sleep
 
-def lambda_handler(event, context):
+def recent_songs(event, context):
     print("getting url: " + event['url'] + ". . .")
 
     if 'url' in event.keys():
