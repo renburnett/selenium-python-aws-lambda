@@ -6,6 +6,8 @@ from ask_sdk_core.handler_input import HandlerInput
 from ask_sdk_model import Response
 from ask_sdk_model.ui import SimpleCard
 
+songs = recent_songs(event, context)
+
 class LaunchRequestHandler(AbstractRequestHandler):
      def can_handle(self, handler_input):
          # type: (HandlerInput) -> bool
@@ -27,12 +29,12 @@ class NowPlayingIntentHandler(AbstractRequestHandler):
 
     def handle(self, handler_input):
         # type: (HandlerInput) -> Response
-        songs = recent_songs(event, context)
-        index = len(songs)
-
-        speech_text = "Hello World"
+        if songs[0]['name'] == 'Now Playing':
+            speech_text = "The current song is " + songs[1]['name'] + " by " songs[1]['artist'] + " off of the album " songs[1]['album']
+        else:
+            speech_text = "The current song is " + songs[0]['name'] + " by " songs[0]['artist'] + " off of the album " songs[0]['album']
 
         handler_input.response_builder.speak(speech_text).set_card(
-            SimpleCard("Hello World", speech_text)).set_should_end_session(
+            SimpleCard("Now Playing", speech_text)).set_should_end_session(
             True)
         return handler_input.response_builder.response
