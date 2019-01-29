@@ -98,8 +98,7 @@ def recent_songs(event, context):
     }
 
     recent_songs.append(first_song)
-    #NOTE: there is a bug on the KEXP page that double-prints the first or second most recent songs sometimes
-    #this if-statement checks for dupes
+    #NOTE: there is a bug on the KEXP page that double-prints the first or second most recent songs sometimes this if-statement checks for dupes
     if song_name_02 != song_name_01:
         recent_songs.append(second_song)
     if song_name_03 != song_name_02 and song_name_03 != song_name_01:
