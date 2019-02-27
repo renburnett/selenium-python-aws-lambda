@@ -1,0 +1,4 @@
+setuptools==40.6.3
+Flask==1.0.2
+flask_ask==0.9.8
+ordereddict==1.1

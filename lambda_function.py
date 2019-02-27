@@ -10,20 +10,31 @@ def lambda_handler(event, context):
     app = Flask(__name__)
     ask = Ask(app, "/")
 
+    #initial call to get songs
+    songs = get_songs(event, context)
+
     #TODO: delete if possible
     @app.route('/')
     def homepage():
         return "KEXP Now Playing App"
 
     @ask.launch
-    def start_skill():
-        #welcome_message = "Hi! I can tell you the song that's currently playing on K-E-X-P or I can tell you the last few songs played"
-        welcome_message = "Hi! I can tell you the last few songs played K-E-X-P, would you like to hear them?"
-        return question(welcome_message)
+    def launch():
+        now_playing_song(songs)
+
+    @ask.intent("NowPlaying")
+    def now_playing_song(songs):
+        if songs['first_song']['song_artist']['song_name_01'] != "":
+            now_playing_msg = "The artist currently playing is " + songs['first_song']['song_name_01'] + " by " + songs['first_song']['song_artist_01'] + " off the album " + songs['first_song']['song_album_01'] + "."
+        else:
+            now_playing_msg = "The artist currently playing is " + songs['first_song']['song_name_02'] + " by " + songs['first_song']['song_artist_02'] + " off the album " + songs['first_song']['song_album_02'] + "."
+        return statement(now_playing_msg)
+
+    #TODO: place an ask intent here for most recent 2-3 songs playing (similar to NowPlaying ask intent)
 
     @ask.intent("YesIntent")
-    def share_recent_songs():
-        songs = get_songs(event, context)
+    def share_recent_songs(songs):
+        #TODO: alter to return multiple songs (currently only returns first one)
         if songs['first_song']['song_artist']['song_name_01'] != "":
             now_playing_msg = "The artist currently playing is " + songs['first_song']['song_name_01'] + " by " + songs['first_song']['song_artist_01'] + " off the album " + songs['first_song']['song_album_01'] + "."
         else:
